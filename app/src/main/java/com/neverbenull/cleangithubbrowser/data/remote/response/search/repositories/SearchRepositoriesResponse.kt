@@ -9,7 +9,7 @@ data class SearchRepositoriesResponse(
     @Json(name = "incomplete_results")
     val incompleteResults: Boolean?,
     @Json(name = "items")
-    val items: List<Repository>?,
+    val items: List<RepoJson>?,
     @Json(name = "total_count")
     val totalCount: Int?
 )

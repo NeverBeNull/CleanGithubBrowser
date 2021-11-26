@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class License(
+data class LicenseJson(
     @Json(name = "html_url")
     val htmlUrl: String?,
     @Json(name = "key")

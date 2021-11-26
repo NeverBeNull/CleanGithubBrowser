@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Repository(
+data class RepoJson(
     @Json(name = "archive_url")
     val archiveUrl: String?,
     @Json(name = "archived")
@@ -53,7 +53,7 @@ data class Repository(
     @Json(name = "forks_url")
     val forksUrl: String?,
     @Json(name = "full_name")
-    val fullName: String?,
+    val fullName: String,
     @Json(name = "git_commits_url")
     val gitCommitsUrl: String?,
     @Json(name = "git_refs_url")
@@ -79,7 +79,7 @@ data class Repository(
     @Json(name = "html_url")
     val htmlUrl: String?,
     @Json(name = "id")
-    val id: Int?,
+    val id: Int,
     @Json(name = "issue_comment_url")
     val issueCommentUrl: String?,
     @Json(name = "issue_events_url")
@@ -91,11 +91,11 @@ data class Repository(
     @Json(name = "labels_url")
     val labelsUrl: String?,
     @Json(name = "language")
-    val language: String?,
+    val language: String,
     @Json(name = "languages_url")
     val languagesUrl: String?,
     @Json(name = "license")
-    val license: License?,
+    val license: LicenseJson?,
     @Json(name = "master_branch")
     val masterBranch: String?,
     @Json(name = "merges_url")
@@ -105,7 +105,7 @@ data class Repository(
     @Json(name = "mirror_url")
     val mirrorUrl: String?,
     @Json(name = "name")
-    val name: String?,
+    val name: String,
     @Json(name = "node_id")
     val nodeId: String?,
     @Json(name = "notifications_url")
@@ -115,7 +115,7 @@ data class Repository(
     @Json(name = "open_issues_count")
     val openIssuesCount: Int?,
     @Json(name = "owner")
-    val owner: Owner?,
+    val owner: OwnerJson?,
     @Json(name = "private")
     val `private`: Boolean?,
     @Json(name = "pulls_url")
