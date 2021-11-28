@@ -6,7 +6,7 @@ data class RepoModel(
     val id: Int,
     val name: String,
     val fullName: String,
-    val language: String,
+    val language: String?,
     val description: String,
     val updatedAt: Date?,
     val stars: Int,

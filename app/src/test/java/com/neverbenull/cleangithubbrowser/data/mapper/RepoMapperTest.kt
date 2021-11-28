@@ -12,7 +12,7 @@ class RepoMapperTest {
             query = "CleanGithubBrowser"
         )
 
-        response.items?.get(0).let { json ->
+        response.items[0].let { json ->
             val repositoryModel = RepoMapper.toDomainModel(json!!)
             println(repositoryModel)
         }

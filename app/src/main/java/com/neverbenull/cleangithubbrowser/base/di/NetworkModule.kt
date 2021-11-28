@@ -1,6 +1,5 @@
 package com.neverbenull.cleangithubbrowser.base.di
 
-import com.neverbenull.cleangithubbrowser.data.remote.api.GithubService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,14 +36,6 @@ object NetworkModule {
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideGithubService(
-        retrofit: Retrofit
-    ) : GithubService {
-        return retrofit.create(GithubService::class.java)
     }
 
 }

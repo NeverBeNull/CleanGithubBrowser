@@ -11,6 +11,6 @@ object NetworkModuleFactory {
 
     private fun provideRetrofit() = NetworkModule.provideRetrofit(provideOkHttpClient())
 
-    private fun provideGithubService() = NetworkModule.provideGithubService(provideRetrofit())
+    private fun provideGithubService() = RepositoryModule.provideGithubService(provideRetrofit())
 
 }

@@ -91,7 +91,7 @@ data class RepoJson(
     @Json(name = "labels_url")
     val labelsUrl: String?,
     @Json(name = "language")
-    val language: String,
+    val language: String?,
     @Json(name = "languages_url")
     val languagesUrl: String?,
     @Json(name = "license")
