@@ -4,6 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.neverbenull.cleangithubbrowser.data.mapper.RepoMapper
 import com.neverbenull.cleangithubbrowser.data.remote.api.GithubService
+import com.neverbenull.cleangithubbrowser.data.remote.api.adapter.ApiResponse
 import com.neverbenull.cleangithubbrowser.domain.model.RepoModel
 import retrofit2.HttpException
 import java.io.IOException
@@ -24,11 +25,27 @@ class GithubPagingSource(
                 page = nextPage
             )
 
-            LoadResult.Page(
-                data = response.items.map { RepoMapper.toDomainModel(it) },
-                prevKey = if(nextPage == 1) null else nextPage - 1,
-                nextKey = nextPage.plus(1)
-            )
+            return when(response) {
+                is ApiResponse.ApiSuccessResponse -> {
+                    LoadResult.Page(
+                        data = response.body.items.map { RepoMapper.toDomainModel(it) },
+                        prevKey = if(nextPage == 1) null else nextPage - 1,
+                        nextKey = response.nextPage
+                    )
+                }
+                is ApiResponse.ApiErrorResponse -> {
+                    LoadResult.Error(response.error)
+                }
+                is ApiResponse.ApiEmptyResponse -> {
+                    LoadResult.Page(
+                        data = emptyList(),
+                        prevKey = null,
+                        nextKey = null,
+                        itemsBefore = 0,
+                        itemsAfter = 0
+                    )
+                }
+            }
 
         } catch (e: IOException) {
             LoadResult.Error(e)

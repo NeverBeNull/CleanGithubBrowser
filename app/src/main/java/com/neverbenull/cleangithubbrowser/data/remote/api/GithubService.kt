@@ -1,5 +1,6 @@
 package com.neverbenull.cleangithubbrowser.data.remote.api
 
+import com.neverbenull.cleangithubbrowser.data.remote.api.adapter.ApiResponse
 import com.neverbenull.cleangithubbrowser.data.remote.response.search.repositories.SearchRepositoriesResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -21,13 +22,13 @@ interface GithubService {
      * @param page Page number of the results to fetch.
      * @return
      */
-    @GET("search/repositories?sort=stars")
+    @GET("search/repositories")
     suspend fun searchRepositories(
         @Query("q") query: String,
         @Query("sort") sort: String = "best match",
         @Query("order") order: String = "desc",
         @Query("per_page") itemsPerPage: Int = 30,
         @Query("page") page: Int = 1
-    ): SearchRepositoriesResponse
+    ): ApiResponse<SearchRepositoriesResponse>
 
 }

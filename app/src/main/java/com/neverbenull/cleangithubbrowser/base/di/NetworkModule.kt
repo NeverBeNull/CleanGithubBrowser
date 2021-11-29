@@ -1,5 +1,6 @@
 package com.neverbenull.cleangithubbrowser.base.di
 
+import com.neverbenull.cleangithubbrowser.data.remote.api.adapter.ApiCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,6 +35,7 @@ object NetworkModule {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(BASE_URL)
+            .addCallAdapterFactory(ApiCallAdapterFactory())
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }
