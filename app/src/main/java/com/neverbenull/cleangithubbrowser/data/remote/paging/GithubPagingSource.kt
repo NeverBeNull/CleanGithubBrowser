@@ -27,7 +27,7 @@ class GithubPagingSource(
             LoadResult.Page(
                 data = response.items.map { RepoMapper.toDomainModel(it) },
                 prevKey = if(nextPage == 1) null else nextPage - 1,
-                nextKey = if(response.incompleteResults) nextPage.plus(1) else null
+                nextKey = nextPage.plus(1)
             )
 
         } catch (e: IOException) {
