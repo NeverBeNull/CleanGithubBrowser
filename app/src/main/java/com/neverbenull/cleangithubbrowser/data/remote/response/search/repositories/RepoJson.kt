@@ -6,6 +6,8 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class RepoJson(
+    @Json(name = "allow_forking")
+    val allowForking: Boolean?,
     @Json(name = "archive_url")
     val archiveUrl: String?,
     @Json(name = "archived")
@@ -80,6 +82,8 @@ data class RepoJson(
     val htmlUrl: String?,
     @Json(name = "id")
     val id: Int,
+    @Json(name = "is_template")
+    val isTemplate: Boolean?,
     @Json(name = "issue_comment_url")
     val issueCommentUrl: String?,
     @Json(name = "issue_events_url")
@@ -125,7 +129,7 @@ data class RepoJson(
     @Json(name = "releases_url")
     val releasesUrl: String?,
     @Json(name = "score")
-    val score: Int?,
+    val score: Double?,
     @Json(name = "size")
     val size: Int?,
     @Json(name = "ssh_url")
@@ -146,6 +150,8 @@ data class RepoJson(
     val tagsUrl: String?,
     @Json(name = "teams_url")
     val teamsUrl: String?,
+    @Json(name = "topics")
+    val topics: List<String>?,
     @Json(name = "trees_url")
     val treesUrl: String?,
     @Json(name = "updated_at")
