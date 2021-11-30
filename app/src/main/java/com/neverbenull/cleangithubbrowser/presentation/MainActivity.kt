@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     private fun initAdapter() {
         binding.list.adapter = adapter
         lifecycleScope.launchWhenCreated {
-            viewModel.searchRepository().collectLatest {
+            viewModel.repos.collectLatest {
                 adapter.submitData(it)
             }
         }
